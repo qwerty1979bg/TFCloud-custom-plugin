@@ -1,6 +1,6 @@
-data "extip" "external_ip" {
-}
+provider "okta" {
+  org_name  = "sample"
+  api_token = "sample"
+  base_url  = "sample"
 
-output "external_ip" {
-  value = "${data.extip.external_ip.ipaddress}"
 }
