@@ -1,20 +1,6 @@
-resource "okta_app_oauth" "test" {
-  label          = "testAcc_replace_with_uuid"
-  type           = "web"
-  grant_types    = ["implicit", "authorization_code"]
-  redirect_uris  = ["http://d.com/"]
-  response_types = ["code", "token", "id_token"]
-  issuer_mode    = "ORG_URL"
+data "extip" "external_ip" {
 }
 
-data "okta_app" "test" {
-  label = "${okta_app_oauth.test.label}"
-}
-
-data "okta_app" "test2" {
-  id = "${okta_app_oauth.test.id}"
-}
-
-data "okta_app" "test3" {
-  label_prefix = "${okta_app_oauth.test.label}"
+output "external_ip" {
+  value = "${data.extip.external_ip.ipaddress}"
 }
